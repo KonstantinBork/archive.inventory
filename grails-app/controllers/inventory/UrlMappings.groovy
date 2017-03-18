@@ -9,7 +9,7 @@ class UrlMappings {
             }
         }
 
-        "/"(view:"/index")
+        "/"(view:"/com/bork/inventory/index")
         "500"(view:'/error')
         "404"(view:'/notFound')
     }

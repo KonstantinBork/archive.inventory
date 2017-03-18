@@ -1,10 +1,9 @@
 package com.bork.inventory
 
-class Book {
+class Music {
 
-    String author
-    String name
-    String publisher
+    String interpreter
+    String albumOrSingleName
     String barcode
 
     static constraints = {
