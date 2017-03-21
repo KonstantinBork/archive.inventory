@@ -5,25 +5,14 @@ import grails.transaction.Transactional
 @Transactional
 class UserService {
 
-    boolean signUp(String name, String emailAddress, String passwordHash) {
-        User user = User.findByEmailAddress(emailAddress)
+    User signUp(String username, String emailAddress, String password) {
+        User user = User.findByUsername(username)
         if (!user) {
-            user = new User(name: name, emailAddress: emailAddress, passwordHash: passwordHash)
+            user = new User(username: username, emailAddress: emailAddress, password: password)
             user.save()
-            return true
+            return user
         } else {
-            return false
-        }
-    }
-
-    int logIn(String emailAddress, String passwordHash) {
-        User user = User.findByEmailAddress(emailAddress)
-        if (!user) {
-            return 1
-        } else if (user.passwordHash != passwordHash) {
-            return 2
-        } else {
-            return 0
+            return null
         }
     }
 

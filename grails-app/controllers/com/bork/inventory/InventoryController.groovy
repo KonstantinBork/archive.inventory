@@ -1,14 +1,19 @@
 package com.bork.inventory
 
-class ImportController {
+import grails.plugin.springsecurity.annotation.Secured
+
+class InventoryController {
 
     ImportService importService
 
-    def index() {
+    @Secured("ROLE_ADMIN")
+    void index() {
         forward(action: importMedia())
     }
 
-    def importMedia() {
+    @Secured("ROLE_ADMIN")
+    void importMedia() {
+        log.debug("Import Media")
         boolean successfulImport
         switch (params.media) {
             case "book":
@@ -28,6 +33,11 @@ class ImportController {
             default:
                 successfulImport = false
         }
+    }
+
+    @Secured("ROLE_USER")
+    void showOwnMedia() {
+
     }
 
     VideogamePlatform getVideogamePlatform(String platform) {
