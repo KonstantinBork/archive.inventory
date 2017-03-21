@@ -16,4 +16,8 @@ class UserService {
         }
     }
 
+    Map<String, ?> getUserMedia(User user) {
+        return [books: user.books, games: user.games, movies: user.movies, music: user.music]
+    }
+
 }

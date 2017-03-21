@@ -35,12 +35,7 @@ class InventoryController {
         }
     }
 
-    @Secured("ROLE_USER")
-    void showOwnMedia() {
-
-    }
-
-    VideogamePlatform getVideogamePlatform(String platform) {
+    private VideogamePlatform getVideogamePlatform(String platform) {
         switch (platform) {
             case "n3ds":
                 return VideogamePlatform.NINTENDO3DS
@@ -65,7 +60,7 @@ class InventoryController {
         }
     }
 
-    MoviePlatform getMoviePlatform(String platform) {
+    private MoviePlatform getMoviePlatform(String platform) {
         switch (platform) {
             case "bluray":
                 return MoviePlatform.BLURAY
