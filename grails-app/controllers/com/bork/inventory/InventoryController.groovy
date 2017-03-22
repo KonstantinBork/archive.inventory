@@ -2,16 +2,15 @@ package com.bork.inventory
 
 import grails.plugin.springsecurity.annotation.Secured
 
+@Secured("ROLE_ADMIN")
 class InventoryController {
 
     ImportService importService
 
-    @Secured("ROLE_ADMIN")
     void index() {
         forward(action: importMedia())
     }
 
-    @Secured("ROLE_ADMIN")
     void importMedia() {
         log.debug("Import Media")
         boolean successfulImport

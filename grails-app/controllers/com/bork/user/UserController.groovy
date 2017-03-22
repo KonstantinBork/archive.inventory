@@ -6,7 +6,7 @@ import grails.plugin.springsecurity.annotation.Secured
 class UserController {
 
     UserService userService
-    SpringSecurityService springSecurityService
+    def springSecurityService
 
     @Secured("ROLE_USER")
     void signup() {
