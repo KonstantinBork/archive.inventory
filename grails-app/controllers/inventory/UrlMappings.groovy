@@ -4,20 +4,25 @@ class UrlMappings {
 
     static mappings = {
 
-        "/$controller/$action/$id?"()
+        // STANDARD URL MAPPING
+        // "/$controller/$action/$id?"()
 
-        // SPRIN SECURITY CORE
-        //"/login/auth"(controller: "login", action: "auth")
+        // SPRING SECURITY CORE
+        "/login/auth"(controller: "login", action: "auth")
 
         // ADMIN VIEW
-        //"/admin"(controller: "admin")
+        "/admin"(controller: "admin")
+        "/import"(view: "/inventory/import")
 
         // USER VIEW
-        //"/signup"(view: "signup")
+        "/signup"(view: "/user/signup")
+        "/user"(controller: "user")
 
-        "/"(view:"/index")
-        "500"(view:'/error')
-        "404"(view:'/notFound')
+
+        // DEFAULT
+        "/"(view: "/index")
+        "500"(view: '/error')
+        "404"(view: '/notFound')
 
     }
 

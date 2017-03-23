@@ -7,11 +7,11 @@ class AdminController {
 
     AdminService adminService
 
-    void index() {
-        render(view: "admin")
+    def index() {
+        render(view: "/user/admin")
     }
 
-    void showAllUser() {
+    def showAllUser() {
         List<User> allUsers = adminService.getAllUsers()
         if (allUsers && allUsers.size() > 0) {
             // TODO render success page
@@ -22,7 +22,7 @@ class AdminController {
         }
     }
 
-    void findUser() {
+    def findUser() {
         String username = params.username
         User user = adminService.getUser(username)
         if (user) {
@@ -34,7 +34,7 @@ class AdminController {
         }
     }
 
-    void deleteUser() {
+    def deleteUser() {
         String username = params.username
         boolean deleted = adminService.deleteUser(username)
         if (deleted) {

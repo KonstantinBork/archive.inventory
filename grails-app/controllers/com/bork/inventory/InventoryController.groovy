@@ -7,11 +7,9 @@ class InventoryController {
 
     ImportService importService
 
-    void index() {
-        forward(action: importMedia())
-    }
+    static defaultAction = "importMedia"
 
-    void importMedia() {
+    def importMedia() {
         log.debug("Import Media")
         boolean successfulImport
         switch (params.media) {
@@ -31,6 +29,13 @@ class InventoryController {
                 break
             default:
                 successfulImport = false
+        }
+        if (successfulImport) {
+            // TODO render success page
+            ""
+        } else {
+            // TODO render error page
+            "A"
         }
     }
 

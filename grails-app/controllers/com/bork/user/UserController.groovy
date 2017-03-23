@@ -3,13 +3,17 @@ package com.bork.user
 import com.bork.inventory.MediaPlatform
 import grails.plugin.springsecurity.annotation.Secured
 
+@Secured("ROLE_USER")
 class UserController {
 
     UserService userService
     def springSecurityService
 
-    @Secured("ROLE_USER")
-    void signup() {
+    def index() {
+        render(view: "/user/user")
+    }
+
+    def signup() {
         String username = params.username
         String emailAddress = params.emailAddress
         String password = params.password
@@ -24,8 +28,7 @@ class UserController {
         }
     }
 
-    @Secured("ROLE_USER")
-    void addMedia() {
+    def addMedia() {
         User user = springSecurityService.isLoggedIn() ? springSecurityService.getCurrentUser() : null
         if (user) {
             boolean added = userService.addMedia(user, getMediaPlatform(params.mediaType as String), params.mediaId as String)
@@ -39,8 +42,7 @@ class UserController {
         }
     }
 
-    @Secured("ROLE_USER")
-    void deleteMedia() {
+    def deleteMedia() {
         User user = springSecurityService.isLoggedIn() ? springSecurityService.getCurrentUser() : null
         if (user) {
             boolean deleted = userService.deleteMedia(user, getMediaPlatform(params.mediaType as String), params.mediaId as String)
@@ -54,8 +56,7 @@ class UserController {
         }
     }
 
-    @Secured("ROLE_USER")
-    void showMedia() {
+    def showMedia() {
         User user = springSecurityService.isLoggedIn() ? springSecurityService.getCurrentUser() : null
         if (user) {
             Map<String, ?> media = userService.getUserMedia(user)
