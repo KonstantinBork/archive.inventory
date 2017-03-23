@@ -18,7 +18,6 @@ class UrlMappings {
         "/signup"(view: "/user/signup")
         "/user"(controller: "user")
 
-
         // DEFAULT
         "/"(view: "/index")
         "500"(view: '/error')
