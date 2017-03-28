@@ -9,14 +9,12 @@
 <header>
     <g:render template="/templates/topNavbar"/>
 </header>
+
 <div class="container">
-    <sec:ifLoggedIn>
-        <a class="btn btn-lg btn-block btn-primary" href="/user">Log In</a>
-    </sec:ifLoggedIn>
-    <sec:ifNotLoggedIn>
-        <g:link controller="login" action="auth" class="btn btn-lg btn-block btn-primary">Log In</g:link>
-    </sec:ifNotLoggedIn>
+    <g:link class="btn btn-lg btn-block btn-primary" controller="user">Log In</g:link>
+
     <h1>Not a user yet?</h1>
+
     <form action="/signup" method="post">
         <label>Username:</label><g:textField name="username"/>
         <label>E-Mail:</label><g:textField name="emailAddress"/>
