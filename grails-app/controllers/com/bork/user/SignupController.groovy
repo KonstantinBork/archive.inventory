@@ -1,7 +1,10 @@
 package com.bork.user
 
+import grails.plugin.springsecurity.SpringSecurityUtils
+
 class SignupController {
 
+    def springSecurityService
     UserService userService
 
     def index() {
@@ -15,6 +18,21 @@ class SignupController {
         } else {
             render(view: "/user/signup", params: [signup: false])
         }
+    }
+
+    def login() {
+        def conf = SpringSecurityUtils.securityConfig
+        if (springSecurityService.isLoggedIn()) {
+            redirect uri: conf.successHandler.defaultTargetUrl
+            return
+        }
+
+        String postUrl = request.contextPath + conf.apf.filterProcessesUrl
+        render view: "/user/login", model: [postUrl            : postUrl,
+                                            rememberMeParameter: conf.rememberMe.parameter,
+                                            usernameParameter  : conf.apf.usernameParameter,
+                                            passwordParameter  : conf.apf.passwordParameter,
+                                            gspLayout          : conf.gsp.layoutAuth]
     }
 
 }

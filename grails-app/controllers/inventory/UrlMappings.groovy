@@ -8,6 +8,7 @@ class UrlMappings {
         // "/$controller/$action/$id?"()
 
         // SPRING SECURITY CORE
+        "/login"(controller: "signup", action: "login")
         "/login/auth"(controller: "login", action: "auth")
 
         // ADMIN VIEW

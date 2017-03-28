@@ -27,3 +27,5 @@ grails.plugin.springsecurity.filterChain.chainMap = [
 
 grails.plugin.springsecurity.password.algorithm = 'bcrypt'
 grails.plugin.springsecurity.password.bcrypt.logrounds = 15
+
+grails.plugin.springsecurity.auth.loginFormUrl = '/login'
