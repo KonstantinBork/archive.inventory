@@ -15,7 +15,7 @@ class UrlMappings {
         "/import"(view: "/inventory/import")
 
         // USER VIEW
-        "/signup"(view: "/user/signup")
+        "/signup"(controller: "signup")
         "/user"(controller: "user")
 
         // DEFAULT
