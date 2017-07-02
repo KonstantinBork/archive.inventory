@@ -16,9 +16,9 @@ class ImportService {
     }
 
     boolean importGame(String name, String developer, VideogamePlatform platform, String barcode) {
-        Game importGame = Game.findByBarcode(barcode)
+        VideoGame importGame = VideoGame.findByBarcode(barcode)
         if (!importGame) {
-            importGame = new Game(name: name, developer: developer, platform: platform, barcode: barcode)
+            importGame = new VideoGame(name: name, developer: developer, platform: platform, barcode: barcode)
             importGame.save()
             return true
         }

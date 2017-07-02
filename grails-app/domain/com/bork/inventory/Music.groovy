@@ -1,10 +1,8 @@
 package com.bork.inventory
 
-class Music {
+class Music extends Media {
 
     String interpreter
-    String albumOrSingleName
-    String barcode
 
     static constraints = {
 

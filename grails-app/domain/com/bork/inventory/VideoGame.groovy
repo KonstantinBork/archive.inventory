@@ -1,11 +1,9 @@
 package com.bork.inventory
 
-class Game {
+class VideoGame extends Media {
 
-    String name
     String developer
     VideogamePlatform platform
-    String barcode
 
     static constraints = {
 

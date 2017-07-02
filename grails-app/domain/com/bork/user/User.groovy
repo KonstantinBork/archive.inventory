@@ -1,7 +1,7 @@
 package com.bork.user
 
 import com.bork.inventory.Book
-import com.bork.inventory.Game
+import com.bork.inventory.VideoGame
 import com.bork.inventory.Movie
 import com.bork.inventory.Music
 import groovy.transform.EqualsAndHashCode
@@ -25,9 +25,9 @@ class User implements Serializable {
 
     static hasMany = [
             books : Book,
-            games : Game,
             movies: Movie,
-            music : Music
+            music : Music,
+            videogames : VideoGame
     ]
 
     Set<Role> getAuthorities() {

@@ -18,6 +18,9 @@ class UrlMappings {
         // USER VIEW
         "/signup"(controller: "signup")
         "/user"(controller: "user")
+        "/user/add"(controller: "user", action: "addMedia")
+        "/user/remove"(controller: "user", action: "removeMedia")
+        "/user/show"(controller: "user", action: "showMedia")
 
         // DEFAULT
         "/"(view: "/index")

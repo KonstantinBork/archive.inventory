@@ -13,8 +13,8 @@ package com.bork.inventory;
 public enum MediaPlatform {
 
     BOOK,
-    GAME,
     MOVIE,
-    MUSIC
+    MUSIC,
+    VIDEOGAME
 
 }

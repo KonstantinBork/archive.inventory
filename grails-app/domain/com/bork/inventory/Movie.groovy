@@ -1,11 +1,9 @@
 package com.bork.inventory
 
-class Movie {
+class Movie extends Media {
 
-    String name
     String director
     MoviePlatform platform
-    String barcode
 
     static constraints = {
 
