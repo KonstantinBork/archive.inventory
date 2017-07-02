@@ -15,16 +15,6 @@ class ImportService {
         return false
     }
 
-    boolean importGame(String name, String developer, VideogamePlatform platform, String barcode) {
-        VideoGame importGame = VideoGame.findByBarcode(barcode)
-        if (!importGame) {
-            importGame = new VideoGame(name: name, developer: developer, platform: platform, barcode: barcode)
-            importGame.save()
-            return true
-        }
-        return false
-    }
-
     boolean importMovie(String name, String director, MoviePlatform platform, String barcode) {
         Movie importMovie = Movie.findByBarcode(barcode)
         if (!importMovie) {
@@ -40,6 +30,16 @@ class ImportService {
         if (!importMusic) {
             importMusic = new Music(interpreter: interpreter, albumOrSingleName: albumOrSingleName, barcode: barcode)
             importMusic.save()
+            return true
+        }
+        return false
+    }
+
+    boolean importVideoGame(String name, String developer, VideogamePlatform platform, String barcode) {
+        VideoGame importGame = VideoGame.findByBarcode(barcode)
+        if (!importGame) {
+            importGame = new VideoGame(name: name, developer: developer, platform: platform, barcode: barcode)
+            importGame.save()
             return true
         }
         return false

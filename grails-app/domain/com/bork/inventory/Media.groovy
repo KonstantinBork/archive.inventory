@@ -16,6 +16,10 @@ abstract class Media {
         }
     }
 
+    def beforeUpdate() {
+        setHashCode()
+    }
+
     abstract void setHashCode()
 
 }
