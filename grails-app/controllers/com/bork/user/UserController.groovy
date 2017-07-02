@@ -1,5 +1,6 @@
 package com.bork.user
 
+import com.bork.inventory.Media
 import com.bork.inventory.MediaPlatform
 import grails.plugin.springsecurity.annotation.Secured
 
@@ -13,13 +14,13 @@ class UserController {
         render(view: "/user/user")
     }
 
+    // TODO Rewrite for AJAX call
     def addMedia() {
         User user = springSecurityService.isLoggedIn() ? springSecurityService.getCurrentUser() : null
         if (user) {
             boolean added = userService.addMedia(user, getMediaPlatform(params.mediaType as String), params.mediaId as String)
             if (added) {
-                // TODO render success page
-                ""
+                render(view: "/user/user")
             } else {
                 // TODO render error page
                 "A"
@@ -27,13 +28,13 @@ class UserController {
         }
     }
 
-    def deleteMedia() {
+    // TODO Rewrite for AJAX call
+    def removeMedia() {
         User user = springSecurityService.isLoggedIn() ? springSecurityService.getCurrentUser() : null
         if (user) {
-            boolean deleted = userService.deleteMedia(user, getMediaPlatform(params.mediaType as String), params.mediaId as String)
+            boolean deleted = userService.removeMedia(user, getMediaPlatform(params.mediaType as String), params.mediaId as String)
             if (deleted) {
-                // TODO render success page
-                "A"
+                render(view: "/user/user")
             } else {
                 // TODO render error page
                 ""
@@ -44,8 +45,8 @@ class UserController {
     def showMedia() {
         User user = springSecurityService.isLoggedIn() ? springSecurityService.getCurrentUser() : null
         if (user) {
-            Map<String, ?> media = userService.getUserMedia(user)
-            // TODO render result
+            Map<String, Media> media = userService.getUserMedia(user)
+            render(view: "/user/show", model: media)
         }
     }
 
@@ -53,12 +54,12 @@ class UserController {
         switch (mediaType) {
             case "book":
                 return MediaPlatform.BOOK
-            case "game":
-                return MediaPlatform.GAME
             case "movie":
                 return MediaPlatform.MOVIE
             case "music":
                 return MediaPlatform.MUSIC
+            case "videogame":
+                return MediaPlatform.VIDEOGAME
             default:
                 return null
         }

@@ -1,11 +1,9 @@
 package com.bork.inventory
 
-class Book {
+class Book extends Media {
 
     String author
-    String name
     String publisher
-    String barcode
 
     static constraints = {
 

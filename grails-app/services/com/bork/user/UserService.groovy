@@ -1,7 +1,8 @@
 package com.bork.user
 
 import com.bork.inventory.Book
-import com.bork.inventory.Game
+import com.bork.inventory.Media
+import com.bork.inventory.VideoGame
 import com.bork.inventory.MediaPlatform
 import com.bork.inventory.Movie
 import com.bork.inventory.Music
@@ -21,8 +22,8 @@ class UserService {
         }
     }
 
-    Map<String, ?> getUserMedia(User user) {
-        return [books: user.books, games: user.games, movies: user.movies, music: user.music]
+    Map<String, Media> getUserMedia(User user) {
+        return [books: user.books, movies: user.movies, music: user.music, videogames: user.videogames] as Map<String, Media>
     }
 
     boolean addMedia(User user, MediaPlatform type, String id) {
@@ -31,13 +32,6 @@ class UserService {
                 Book book = Book.findByBarcode(id)
                 if (book) {
                     user.addToBooks(book)
-                    return true
-                }
-                return false
-            case MediaPlatform.GAME:
-                Game game = Game.findByBarcode(id)
-                if (game) {
-                    user.addToGames(game)
                     return true
                 }
                 return false
@@ -55,24 +49,31 @@ class UserService {
                     return true
                 }
                 return false
+            case MediaPlatform.VIDEOGAME:
+                VideoGame game = VideoGame.findByBarcode(id)
+                if (game) {
+                    user.addToVideogames(game)
+                    return true
+                }
+                return false
             default:
                 return false
         }
     }
 
-    boolean deleteMedia(User user, MediaPlatform type, String id) {
+    boolean removeMedia(User user, MediaPlatform type, String id) {
         switch (type) {
             case MediaPlatform.BOOK:
                 user.removeFromBooks(Book.findByBarcode(id))
-                return true
-            case MediaPlatform.GAME:
-                user.removeFromGames(Game.findByBarcode(id))
                 return true
             case MediaPlatform.MOVIE:
                 user.removeFromMovies(Movie.findByBarcode(id))
                 return true
             case MediaPlatform.MUSIC:
                 user.removeFromMusic(Music.findByBarcode(id))
+                return true
+            case MediaPlatform.VIDEOGAME:
+                user.removeFromVideogames(VideoGame.findByBarcode(id))
                 return true
             default:
                 return false
