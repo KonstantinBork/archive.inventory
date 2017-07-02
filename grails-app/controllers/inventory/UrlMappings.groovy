@@ -8,6 +8,7 @@ class UrlMappings {
         // "/$controller/$action/$id?"()
 
         // SPRING SECURITY CORE
+        "/login"(controller: "signup", action: "login")
         "/login/auth"(controller: "login", action: "auth")
 
         // ADMIN VIEW
@@ -15,9 +16,8 @@ class UrlMappings {
         "/import"(view: "/inventory/import")
 
         // USER VIEW
-        "/signup"(view: "/user/signup")
+        "/signup"(controller: "signup")
         "/user"(controller: "user")
-
 
         // DEFAULT
         "/"(view: "/index")

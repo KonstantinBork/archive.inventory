@@ -1,0 +1,18 @@
+.btn-default {
+
+}
+
+.btn-primary {
+
+}
+
+.navbar-brand {
+    float: none;
+}
+
+.navbar-header {
+    float: left;
+    padding: 15px;
+    text-align: center;
+    width: 100%;
+}
