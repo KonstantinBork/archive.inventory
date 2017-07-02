@@ -9,4 +9,9 @@ class Book extends Media {
 
     }
 
+    @Override
+    void setHashCode() {
+        hashCode = (name.hashCode() + barcode.hashCode() + author.hashCode() + publisher.hashCode()) as String
+    }
+
 }

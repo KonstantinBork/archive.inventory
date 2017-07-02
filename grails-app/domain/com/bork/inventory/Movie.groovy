@@ -9,4 +9,9 @@ class Movie extends Media {
 
     }
 
+    @Override
+    void setHashCode() {
+        hashCode = (name.hashCode() + barcode.hashCode() + director.hashCode() + platform.hashCode()) as String
+    }
+
 }

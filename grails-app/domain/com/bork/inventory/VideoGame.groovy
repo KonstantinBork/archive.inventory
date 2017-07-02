@@ -9,4 +9,9 @@ class VideoGame extends Media {
 
     }
 
+    @Override
+    void setHashCode() {
+        hashCode = (name.hashCode() + barcode.hashCode() + developer.hashCode() + platform.hashCode()) as String
+    }
+
 }

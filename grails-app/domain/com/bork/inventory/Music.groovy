@@ -8,4 +8,9 @@ class Music extends Media {
 
     }
 
+    @Override
+    void setHashCode() {
+        hashCode = (name.hashCode() + barcode.hashCode() + interpreter.hashCode()) as String
+    }
+
 }
