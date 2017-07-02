@@ -1,14 +1,16 @@
 package com.bork.inventory
 
-class ImportController {
+import grails.plugin.springsecurity.annotation.Secured
+
+@Secured("ROLE_ADMIN")
+class InventoryController {
 
     ImportService importService
 
-    def index() {
-        forward(action: importMedia())
-    }
+    static defaultAction = "importMedia"
 
     def importMedia() {
+        log.debug("Import Media")
         boolean successfulImport
         switch (params.media) {
             case "book":
@@ -28,9 +30,16 @@ class ImportController {
             default:
                 successfulImport = false
         }
+        if (successfulImport) {
+            // TODO render success page
+            ""
+        } else {
+            // TODO render error page
+            "A"
+        }
     }
 
-    VideogamePlatform getVideogamePlatform(String platform) {
+    private VideogamePlatform getVideogamePlatform(String platform) {
         switch (platform) {
             case "n3ds":
                 return VideogamePlatform.NINTENDO3DS
@@ -55,7 +64,7 @@ class ImportController {
         }
     }
 
-    MoviePlatform getMoviePlatform(String platform) {
+    private MoviePlatform getMoviePlatform(String platform) {
         switch (platform) {
             case "bluray":
                 return MoviePlatform.BLURAY
