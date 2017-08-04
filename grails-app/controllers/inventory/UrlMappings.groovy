@@ -13,7 +13,7 @@ class UrlMappings {
 
         // ADMIN VIEW
         "/admin"(controller: "admin")
-        "/import"(view: "/inventory/import")
+        "/import"(view: "/cms/import")
 
         // USER VIEW
         "/signup"(controller: "signup")
