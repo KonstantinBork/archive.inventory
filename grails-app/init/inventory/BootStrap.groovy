@@ -1,8 +1,8 @@
 package inventory
 
-import com.bork.user.Role
-import com.bork.user.User
-import com.bork.user.UserRole
+import com.inventory.app.Role
+import com.inventory.app.User
+import com.inventory.app.UserRole
 
 class BootStrap {
 
